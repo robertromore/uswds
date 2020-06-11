@@ -937,6 +937,9 @@ Derive a color from a color shortcode
       @error '`#{$value}` is a color that does not exist '
         + 'or is set to false.';
     }
+    @if $theme-css-custom-props == true {
+      @return var(--theme-color-#{$value}, $our-color);
+    }
     @return $our-color;
   }
 
@@ -947,6 +950,9 @@ Derive a color from a color shortcode
       @if $our-color == false {
         @error '`#{$value}` is a color that does not exist '
           + 'or is set to false.';
+      }
+      @if $theme-css-custom-props == true {
+        @return var(--theme-color-#{$value}, $our-color);
       }
       @return $our-color;
     }
